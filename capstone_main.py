@@ -8,13 +8,13 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 config = {
-"apiKey": "AIzaSyCJYnrrW52P_Q_-mlrdSggGP8ZoX5yGe0Q",
-"authDomain": "test-16308.firebaseapp.com",
-"databaseURL": "https://test-16308.firebaseio.com",
-"projectId": "test-16308",
+"apiKey": "",
+"authDomain": "",
+"databaseURL": "",
+"projectId": "",
 "storageBucket": "",
-"messagingSenderId": "612785575325",
-"appId": "1:612785575325:web:cd921c70413fb220"
+"messagingSenderId": "",
+"appId": ""
 }
 
 firebase = pyrebase.initialize_app(config)
