@@ -8,14 +8,14 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 #Your web app's Firebase configuration
 firebaseConfig = {
-	"apiKey": "AIzaSyCJtfb68rShfsaknLUPOANCcLuVmsnV3PI",
-	"authDomain": "fir-app-th4.firebaseapp.com",
-	"databaseURL": "https://fir-app-th4.firebaseio.com",
-	"projectId": "fir-app-th4",
-	"storageBucket": "fir-app-th4.appspot.com",
-	"messagingSenderId": "130663563400",
-	"appId": "1:130663563400:web:4e67967055c03f6c4d5f3d",
-	"measurementId": "G-X6FNZLK0YW"
+	"apiKey": "AIzaSyA-Ueu9QRqP3m-Su5h-w-C1iKlC4cwRvtc",
+	"authDomain": "room-sched-cloudcomp.firebaseapp.com",
+	"databaseURL": "https://room-sched-cloudcomp.firebaseio.com",
+	"projectId": "room-sched-cloudcomp",
+	"storageBucket": "room-sched-cloudcomp.appspot.com",
+	"messagingSenderId": "1092960328863",
+	"appId": "1:1092960328863:web:cdb679dac22f6894c716aa",
+	"measurementId": "G-1ELV6G08MK"
 }
 
 #Initialize Firebase
