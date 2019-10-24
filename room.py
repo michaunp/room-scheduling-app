@@ -27,4 +27,4 @@ class Room:
 		pass
 
 	def delete_event():
-		
+		pass
