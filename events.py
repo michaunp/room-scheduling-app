@@ -1,4 +1,12 @@
+import enum
 
+class EventType:
+	def __init__(enum.Enum):
+		social = 1
+		profDev = 2
+		academic = 3
+		career = 4
+		volunteer = 5
 
 class Event:
 
@@ -11,6 +19,12 @@ class Event:
 		self.roomNum = roomNum
 		self.eventType = eventType
 
-	#methods - Create Read Update Delete
+	#CRUD methods
+	#TODO: need Update Method!
 
-	def CreateEvent(name, start, end, roomNum, eventType):
+	def PrintEvent(self):
+		print(self.name)
+		print(self.start)
+		print(self.end)
+		print(self.roomNum)
+		print(self.eventType)
