@@ -73,9 +73,10 @@ def signup():
 def hello():
 	return "<h1 style='color:blue'>Hello There!</h1>"
 
-@app.route('/events/create', methods=['GET', 'POST'])
+'''@app.route('/events/create', methods=['GET', 'POST'])
 def createEvent():
-	#TODO: method to handle input from user in the form of the 
+	#TODO: method to handle input from user in the form of the
+	 '''
 
 if __name__ == "__main__":
-	app.run(host='0.0.0.0')
+    	app.run(host='0.0.0.0')
