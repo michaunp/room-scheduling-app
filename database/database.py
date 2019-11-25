@@ -1,12 +1,25 @@
-from google.cloud import storage
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-# Client Instantiation
-storage_client = storage.Client()
+db = SQLAlchemy()
 
-#The name for the new bucket
-bucket_name = 'my-new-bucket'
+def init_app(app):
+    # Disable track modifications, as it unnecessarily uses memory.
+    app.config.setdefault('SQLALCHEMY_TRACK_MODIFICATIONS', False)
+    db.init_app(app)
+    
+def _create_database():
+    """
+    If this script is run directly, create all the tables necessary to run the
+    application.
+    """
+    app = Flask(__name__)
+    app.config.from_pyfile('../config.py')
+    init_app(app)
+    with app.app_context():
+        db.create_all()
+    print("All tables created")
 
-# Creates the new bucket
-bucket = storage_client.create_bucket(bucket_name)
 
-print('Bucket {} created.'.format(bucket.name))
+if __name__ == '__main__':
+    _create_database()

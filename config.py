@@ -12,5 +12,3 @@ CLOUDSQL_CONNECTION_NAME = 'room-sched-cloudcomp:us-east4:room-sched-db'
 PROJECT_ID = '35.199.58.121'
 
 DATA_BACKEND = 'CloudSQL'
-
-CLOUD
