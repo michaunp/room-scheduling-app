@@ -2,6 +2,7 @@ import pyrebase
 
 from flask import Flask, flash, redirect, render_template, \
 request, url_for
+import sqlalchemy
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -22,8 +23,26 @@ firebaseConfig = {
 firebase = pyrebase.initialize_app(firebaseConfig)
 auth = firebase.auth()
 
+db = sqlalchemy.create_engine(
+    sqlalchemy.engine.url.URL(
+        drivername='mysql+pymysql',
+        username= 'root',
+        password= '20CloudComp19!',
+        database= 'roomscheddb',
+        query={
+            'unix_socket': '/cloudsql/{}'.format('room-sched-cloudcomp:us-east4:room-sched-db')
+        }
+    ),
+)
+
+
+
 @app.route('/')
 def index():
+	with db.connect as conn:
+		conn.execute('describe ROOM;')
+
+	print(conn.fetchone())
 	return render_template('index.html')
 
 @app.route('/landing/<username>')

@@ -1,7 +1,7 @@
 # CloudSQL & SQLAlchemy configuration
 # Replace the following values the respective values of your Cloud SQL
 # instance.
-CLOUDSQL_USER = 'andre.vincent@bison.howard.edu'
+CLOUDSQL_USER = 'root'
 CLOUDSQL_PASSWORD = '20CloudComp19!'
 CLOUDSQL_DATABASE = 'roomscheddb'
 # Set this value to the Cloud SQL connection name, e.g.
