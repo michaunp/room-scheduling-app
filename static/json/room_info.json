@@ -1,0 +1,20 @@
+[
+	{
+		"Room Number": 1020,
+		"Capacity": 15,
+		"Room Types": ["Meeting"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 2019,
+		"Capacity": 25,
+		"Room Types": ["Meeting", "Lecture"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 3116,
+		"Capacity": 40,
+		"Room Types": ["Lecture", "Lab"],
+		"Status": "Free"
+	}
+]
