@@ -1,11 +1,20 @@
+import logging
+import os
 import pyrebase
 
 from flask import Flask, flash, redirect, render_template, \
 request, url_for
 import sqlalchemy
+#from flask_sqlalchemy import SQLAlchemy
 
+db_user = os.environ.get("DB_USER")
+db_pass = os.environ.get("DB_PASS")
+db_name = os.environ.get("DB_NAME")
+cloud_sql_connection_name = os.environ.get("CLOUD_SQL_CONNECTION_NAME")
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 #Your web app's Firebase configuration
 firebaseConfig = {
@@ -33,16 +42,19 @@ db = sqlalchemy.create_engine(
             'unix_socket': '/cloudsql/{}'.format('room-sched-cloudcomp:us-east4:room-sched-db')
         }
     ),
+    pool_size=5,
+    max_overflow=2,
+    pool_timeout=30,  # 30 seconds
+    pool_recycle=1800,  
 )
-
 
 
 @app.route('/')
 def index():
-	with db.connect as conn:
-		conn.execute('describe ROOM;')
+	with db.connect() as conn:
+		results = conn.execute('describe ROOM;').fetchall()
+		print(results)
 
-	print(conn.fetchone())
 	return render_template('index.html')
 
 @app.route('/landing/<username>')

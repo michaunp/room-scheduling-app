@@ -1,5 +1,12 @@
 runtime: python37
 
+env_variables:
+  CLOUD_SQL_CONNECTION_NAME: room-sched-cloudcomp:us-east4:room-sched-db
+  DB_USER: root
+  DB_PASS: 20CloudComp19!
+  DB_NAME: roomscheddb
+beta_settings:
+    cloud_sql_instances: room-sched-cloudcomp:us-east4:room-sched-db
 handlers:
 - url: /
   script: auto
