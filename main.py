@@ -42,7 +42,7 @@ def login():
 
 		try:
 			auth.sign_in_with_email_and_password(email, password)
-			return render_template('landing.html', username=email)
+			return render_template('dashboard.html', username=email)
 		except:
 			return render_template('login.html', us=unsuccessful)
 
