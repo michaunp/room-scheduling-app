@@ -1,9 +1,10 @@
+import json
 import logging
 import os
 import pyrebase
 
 from flask import Flask, flash, redirect, render_template, \
-request, url_for
+request, url_for, jsonify
 import sqlalchemy
 #from flask_sqlalchemy import SQLAlchemy
 
@@ -51,10 +52,6 @@ db = sqlalchemy.create_engine(
 
 @app.route('/')
 def index():
-	with db.connect() as conn:
-		results = conn.execute('describe ROOM;').fetchall()
-		print(results)
-
 	return render_template('index.html')
 
 @app.route('/landing/<username>')
@@ -73,7 +70,18 @@ def login():
 
 		try:
 			auth.sign_in_with_email_and_password(email, password)
-			return render_template('dashboard.html', username=email)
+			with db.connect() as conn:
+				room_data = conn.execute('select * from ROOM;').fetchall()
+				rooms = []
+				for row in room_data:
+					rooms.append({
+					"Room Number": row[1],
+					"Capacity": row[4],
+					"Room Types": row[0].split(','),
+					"Status": row[5]
+					})
+				json_rooms = json.dumps(rooms)
+			return render_template('dashboard.html', room_data=json_rooms)
 		except:
 			return render_template('login.html', us=unsuccessful)
 

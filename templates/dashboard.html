@@ -20,16 +20,29 @@
 			  <thead>
 			    <tr>
 			      <th scope="col" data-field="Room Number" data-filter-control="input">Room Number</th>
-			      <th scope="col" data-field="Capacity">Capacity</th>
+			      <th scope="col" data-field="Capacity" data-filter-control="select">Capacity</th>
 			      <th scope="col" data-field="Room Types" data-filter-control="select">Room Types</th>
 			      <th scope="col" data-field="Status" data-filter-control="select">Status</th>
 			    </tr>
 			  </thead>
 			</table>
 			<script>
+				function escapeHtml(text) {
+				  var map = {
+				    // '&': '&amp;',
+				    // '<': '&lt;',
+				    // '>': '&gt;',
+				    // '"': '&quot;',
+				    "&#34;": '"'
+				  };
+
+				  return text.replace(/&#34;/g, function(m) { return map[m]; });
+				}
+
 				function initTable() {
+				    var esc_room_data = JSON.parse(escapeHtml("{{room_data}}"));
 				    $('#room-table').bootstrapTable({
-				    url: '/static/json/room_info.json',
+				    data: esc_room_data,
 				    columns: [{
 				        field: 'Room Number',
 				        title: 'Room Number'
@@ -42,12 +55,12 @@
 				    }, {
 				        field: 'Status',
 				        title: 'Status'
-				    }]});
-				}
+				    }]
+				})}
 				$(function() {
     				initTable()
-    			})
-			</script>>
+    			});
+			</script>
 		</div>			
 	</body>
 </html>
