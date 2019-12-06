@@ -1,0 +1,32 @@
+[
+	{
+		"Room Number": 2114,
+		"Capacity": 50,
+		"Room Types": ["Lecture", "Lab"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 2113,
+		"Capacity": 45,
+		"Room Types": ["Lecture", "Lab"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 2119,
+		"Capacity": 15,
+		"Room Types": ["Meeting"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 3116,
+		"Capacity": 20,
+		"Room Types": ["Lecture", "Lab"],
+		"Status": "Free"
+	},
+	{
+		"Room Number": 1020,
+		"Capacity": 15,
+		"Room Types": ["Meeting"],
+		"Status": "Free"
+	}
+]

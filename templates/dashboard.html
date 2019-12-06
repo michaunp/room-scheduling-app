@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/dashboard.css') }}">
+		<link type="application/json" href="{{ url_for('static',filename='json/room_info.json') }}">
+		<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+		<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+		<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+	</head>
+	<body>
+		<img class="dashboard-logo-image circular--square" src="/static/images/cloudcomplogo.png" alt="Logo" width="128" height="128" class="center">
+		<div id="room-info-table" class="room-info-table">
+			<table id = "room-table" class="table table-bordered"
+			  data-filter-control="true"
+			  data-show-search-clear-button="true">
+			  <thead>
+			    <tr>
+			      <th scope="col" data-field="Room Number" data-filter-control="input">Room Number</th>
+			      <th scope="col" data-field="Capacity" data-filter-control="select">Capacity</th>
+			      <th scope="col" data-field="Room Types" data-filter-control="select">Room Types</th>
+			      <th scope="col" data-field="Status" data-filter-control="select">Status</th>
+			    </tr>
+			  </thead>
+			</table>
+			<script>
+				function escapeHtml(text) {
+				  var map = {
+				    // '&': '&amp;',
+				    // '<': '&lt;',
+				    // '>': '&gt;',
+				    // '"': '&quot;',
+				    "&#34;": '"'
+				  };
+
+				  return text.replace(/&#34;/g, function(m) { return map[m]; });
+				}
+
+				function initTable() {
+				    var esc_room_data = JSON.parse(escapeHtml("{{room_data}}"));
+				    $('#room-table').bootstrapTable({
+				    data: esc_room_data,
+				    columns: [{
+				        field: 'Room Number',
+				        title: 'Room Number'
+				    }, {
+				        field: 'Capacity',
+				        title: 'Capacity'
+				    }, {
+				        field: 'Room Types',
+				        title: 'Room Types'
+				    }, {
+				        field: 'Status',
+				        title: 'Status'
+				    }]
+				})}
+				$(function() {
+    				initTable()
+    			});
+			</script>
+		</div>			
+	</body>
+</html>
